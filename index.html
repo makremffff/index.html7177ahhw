@@ -56,13 +56,16 @@
             font-size:14px;
             color:#333;
         }
+        /* صورة بروفايل أكبر دائرية */
         .user-avatar{
-            width:40px;
-            height:40px;
+            width:64px;  /* أكبر من 40px السابقة */
+            height:64px;
             border-radius:50%;
-            object-fit:cover;
-            background:#e0e0e0;
-            display:flex;align-items:center;justify-content:center;font-size:18px;color:#666
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+            background-color:#e0e0e0; /* خلفية بديلة إذا لم توجد صورة */
+            flex-shrink:0;
         }
         .user-info{display:flex;flex-direction:column;gap:2px}
         .user-name{font-weight:600}
@@ -110,7 +113,8 @@
 
             <!-- بيانات المستخدم – في أسفل الشاشة تماماً -->
             <div class="user-footer" id="userFooter" style="display:none">
-                <img class="user-avatar" id="userAvatar" src="" alt="">
+                <!-- div الصورة أصبح فارغاً وسنملأه عبر background-image -->
+                <div class="user-avatar" id="userAvatar"></div>
                 <div class="user-info">
                     <div class="user-name" id="userName"></div>
                     <div class="user-username" id="userUsername"></div>
@@ -182,12 +186,11 @@
             const username = tgData.username ? '@'+tgData.username : 'غير متاح';
             userUsernameEl.textContent = username;
 
-            // الصورة
+            // الصورة (إن وُجدت) وإلا خلفية رمادية
             if(tgData.photo_url){
-                userAvatar.src = tgData.photo_url;
-                userAvatar.style.display = 'block';
+                userAvatar.style.backgroundImage = `url(${tgData.photo_url})`;
             }else{
-                userAvatar.style.display = 'none';
+                userAvatar.style.backgroundImage = 'none';
             }
 
             userFooter.style.display = 'flex';
