@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT App UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 390px;
+            height: 844px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #fafafa;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+        }
+
+        .balance-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .usdt-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .timer {
+            font-size: 14px;
+            font-weight: 300;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .buttons-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-open {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .btn-open:hover {
+            background: #00acc1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,188,212,0.3);
+        }
+
+        .btn-bonus {
+            background: #ffd54f;
+            color: #333;
+        }
+
+        .btn-bonus:hover {
+            background: #ffca28;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255,213,79,0.3);
+        }
+
+        .center-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 80px;
+            background: linear-gradient(135deg, #2196f3 0%, #e0e0e0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(33,150,243,0.2);
+            position: relative;
+        }
+
+        .usdt-symbol {
+            font-size: 72px;
+            font-weight: 300;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+            background: white;
+            margin: 0 -24px -20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-icon {
+            width: 48px;
+            height: 48px;
+            background: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #666;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover .nav-icon {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .nav-label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Gift icon */
+        .gift-icon::before {
+            content: "🎁";
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="screen">
+            <div class="status-bar">
+                <span>9:41</span>
+                <span>100% 🔋</span>
+            </div>
+            
+            <div class="content">
+                <div class="top-section">
+                    <div class="balance-section">
+                        <div class="usdt-text">USDT 0</div>
+                        <div class="timer">3:00:00</div>
+                    </div>
+                    
+                    <div class="buttons-section">
+                        <button class="btn btn-open">
+                            <span class="gift-icon"></span>
+                            Open Box
+                        </button>
+                        <button class="btn btn-bonus">Bonus</button>
+                    </div>
+                </div>
+                
+                <div class="center-circle">
+                    <div class="usdt-symbol">₮</div>
+                </div>
+                
+                <div class="bottom-nav">
+                    <div class="nav-item">
+                        <div class="nav-icon">📋</div>
+                        <span class="nav-label">TASK</span>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon">⇄</div>
+                        <span class="nav-label">SWAP</span>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon">👁</div>
+                        <span class="nav-label">WATCH</span>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon">💰</div>
+                        <span class="nav-label">WITHDRAW</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
